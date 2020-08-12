@@ -14,7 +14,10 @@
           <img src="http://placehold.it/350x250" alt="" />
       </a>
   </div>
+
   <div class="col-sm-8">
+  <p class='text-right'>
+    <a href="{% url 'checkout:create_cart_item' product.slug %}" class="btn btn-default" role="button">Adicionar ao Carrinho</a></p>
       {{product.description|linebreaks}}
   </div>
 </div>
