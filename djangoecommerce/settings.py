@@ -9,7 +9,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['django-e-comerce.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['django-e-comerce.herokuapp.com','localhost','https://django-e-comerce.herokuapp.com/']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
