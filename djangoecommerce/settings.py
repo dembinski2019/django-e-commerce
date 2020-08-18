@@ -122,4 +122,7 @@ MESSAGE_TAGS = {
     messages_constants.ERROR:'danger',
 }
 
-
+#pagseguro
+PAGSEGURO_TOKEN = '4DA5ECE3B9544A818E8C7323E15C8D15'
+PAGSEGURO_EMAIL = 'everton_s.d@hotmail.com'
+PAGSEGURO_SANDBOX = True

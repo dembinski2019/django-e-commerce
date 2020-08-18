@@ -13,14 +13,17 @@
     <h1>Finalização da Compra</h1>
 </div>
 <div class="row">
-    <div class="col-md-8 col-md-offset02">
-        <div class="alert alert-success">
-            Seu pedido foi realizado com sucesso, para realizar o pagmento faça depósito na seguinte conta:
-
-        </div>
+    <div class="col-md-12">
         <p>
-            Mussum Ipsum, cacilds vidis litro abertis. Leite de capivaris, leite de mula manquis sem cabeça
+            Pedido #{{order.pk}}
         </p>
+    </div>
+
+    <div class="col-md-4 col-md-offset-2">
+        <a href="{% url 'checkout:pagseguro_view' order.pk %}" class=" btn btn-success">Pagar com PagSeguro</a>
+    </div>
+    <div class="col-md-4 c">
+        <a href="#" class=" btn btn-primary">Pagar com Paypal</a>
     </div>
 </div>
 
