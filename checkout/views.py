@@ -107,7 +107,7 @@ class PagSeguroView(LoginRequiredMixin, RedirectView):
 
 @csrf_exempt
 def pagseguro_notification(request):
-    notification_code = request.POST.get('notificarionCode', None)
+    notification_code = request.POST.get('notificationCode', None)
     if notification_code:
         pg=PagSeguro(
              email=settings.PAGSEGURO_EMAIL, token= settings.PAGSEGURO_TOKEN,
