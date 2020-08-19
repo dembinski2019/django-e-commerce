@@ -8,6 +8,8 @@ from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from pagseguro import PagSeguro
 from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
+
 
 class CreateCartItemView(RedirectView):
 
@@ -109,15 +111,20 @@ class PagSeguroView(LoginRequiredMixin, RedirectView):
 def pagseguro_notification(request):
     notification_code = request.POST.get('notificationCode', None)
     if notification_code:
-        pg=PagSeguro(
-             email=settings.PAGSEGURO_EMAIL, token= settings.PAGSEGURO_TOKEN,
-            config={'sandbox':settings.PAGSEGURO_SANDBOX}
-        )
+        if settings.PAGSEGURO_SANDBOX:
+            pg=PagSeguro(
+                email=settings.PAGSEGURO_EMAIL, token= settings.PAGSEGURO_TOKEN,
+                config={'sandbox':settings.PAGSEGURO_SANDBOX}
+            )
+        else:
+            pg=PagSeguro(
+                email=settings.PAGSEGURO_EMAIL, token= settings.PAGSEGURO_TOKEN,
+            )
         notification_data = pg.check_notification(notification_code)
         status = notification_data.status
         reference = notification_data.reference
         try:
-            order = Order.objects.get(pk= reference)
+            order = Order.objects.get(pk=reference)
         except Order.DoesNotExist:
             pass
         else:
