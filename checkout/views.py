@@ -122,6 +122,6 @@ def pagseguro_notification(request):
             pass
         else:
             order.pagseguro_update_status(status)
-        return HttpResponse('OK')
+    return HttpResponse('OK')
 
 

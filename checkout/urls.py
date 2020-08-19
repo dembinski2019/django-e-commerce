@@ -16,6 +16,6 @@ urlpatterns = [
     path('meus-pedidos/',OrderListView.as_view(),name='order_list'),
     path('meus-pedidos/<int:pk>/',OrderDetailView.as_view(),name='order_detail'),
     path('finalizando/<int:pk>/pagseguro/',PagSeguroView.as_view(),name='pagseguro_view'),
-    path('notificcoes/pagseguro/',pagseguro_notification,name='pagseguro_notification'),
+    path('notificacoes/pagseguro/',pagseguro_notification,name='pagseguro_notification'),
     
 ]
