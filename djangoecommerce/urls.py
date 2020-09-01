@@ -9,4 +9,5 @@ urlpatterns = [
     path('conta/', include(('accounts.urls', 'accounts'), namespace='accounts')),
     path('catalogo/', include(('catalog.urls', 'catalog'), namespace='catalog')),
     path('compras/', include(('checkout.urls','checkout'), namespace='checkout')),
+    path('paypal/', include('paypal.standart.ipn.urls')),
 ]

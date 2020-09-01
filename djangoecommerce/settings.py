@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'accounts',
     'checkout',
+    'paypal.standard.ipn',
 
 ]
 
@@ -126,3 +127,9 @@ MESSAGE_TAGS = {
 PAGSEGURO_TOKEN = '4DA5ECE3B9544A818E8C7323E15C8D15'
 PAGSEGURO_EMAIL = 'everton_s.d@hotmail.com'
 PAGSEGURO_SANDBOX = True
+
+#PayPal configuração
+PAYPAL_TEST = True
+PAYPAL_EMAIL = 'everton_s.d@hotmail.com'
+
+

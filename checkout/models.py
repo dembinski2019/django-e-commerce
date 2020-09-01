@@ -107,6 +107,8 @@ class Order(models.Model):
         self.save()
 
     def pagseguro(self):
+        self.payment_option = 'pagseguro'
+        self.save()
         pg = PagSeguro(
             email=settings.PAGSEGURO_EMAIL, token= settings.PAGSEGURO_TOKEN,
             config={'sandbox':settings.PAGSEGURO_SANDBOX}
@@ -128,6 +130,28 @@ class Order(models.Model):
                 }
             )
         return pg
+
+    def paypal(self):
+        self.payment_option = 'paypal'
+        self.save()
+        paypal_dict = {
+            'upload':'1',
+            'business': settings.PAYPAL_EMAIL,
+            'invoice':self.pk,
+            'cmd':'_cart',
+            'currency_code':'BRL',
+            'charset':'utf-8',
+        }
+        index = 1
+        for item in self.items.all():
+            paypal_dict[f'amount_{index}'] = f'{item.price:.2f}' 
+            paypal_dict[f'item_name_{index}'] = item.product.name
+            paypal_dict[f'quantity_{index}'] = item.quantity
+            index += 1
+        return paypal_dict
+
+
+
 
 class OrderItem(models.Model):
 
