@@ -9,7 +9,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['django-e-comerce.herokuapp.com','localhost','https://django-e-comerce.herokuapp.com/']
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -99,10 +99,15 @@ LOGOUT_REDIRECT_URL = 'index'
 
 
 STATIC_URL = '/static/'
+STATIC_MEDIA = '/media/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,"static"),
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'staticfiles')
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media')
+
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'everton_s.d@hotmail.com'
 
