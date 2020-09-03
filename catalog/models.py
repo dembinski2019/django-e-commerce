@@ -31,7 +31,7 @@ class Product(models.Model):
 
     category = models.ForeignKey(Category, verbose_name='Categoria', on_delete=models.CASCADE)
     description = models.TextField('Descrição', blank=True)
-
+    image=models.ImageField('Imagem',upload_to='products', blank=True, null=True)
     price = models.DecimalField('Preço', max_digits=8, decimal_places=2)
     
     class Meta:

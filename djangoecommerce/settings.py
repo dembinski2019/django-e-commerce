@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'accounts',
     'checkout',
     'paypal.standard.ipn',
+    'easy_thumbnails',
 
 ]
 
@@ -99,13 +100,13 @@ LOGOUT_REDIRECT_URL = 'index'
 
 
 STATIC_URL = '/static/'
-STATIC_MEDIA = '/media/'
+MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,"static"),
 ]
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'staticfiles')
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -138,3 +139,8 @@ PAYPAL_TEST = True
 PAYPAL_EMAIL = 'everton_s.d@hotmail.com'
 
 
+THUMBNAIL_ALIASES = {
+    '': {
+        'product_image': {'size': (350, 200), 'crop': True},
+    },
+}
