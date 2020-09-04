@@ -134,7 +134,7 @@ class Order(models.Model):
         self.status = 1
         self.save()
 
-        
+
     def paypal(self):
         self.payment_option = 'paypal'
         self.save()
