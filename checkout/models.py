@@ -130,7 +130,11 @@ class Order(models.Model):
                 }
             )
         return pg
+    def complete(self):
+        self.status = 1
+        self.save()
 
+        
     def paypal(self):
         self.payment_option = 'paypal'
         self.save()
