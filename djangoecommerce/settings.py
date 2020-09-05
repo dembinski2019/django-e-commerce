@@ -96,11 +96,31 @@ LOGIN_REDIRECT_URL = 'index'
 LOGOUT_URL = 'accounts:logout'
 LOGOUT_REDIRECT_URL = 'index'
 
+#aws
+STATICFILES_LOCATION = 'static'
+MEDIAFILES_LOCATION = 'media'
+
+AWS_S3_SECURE_URLS = True
+AWS_QUERYSTRING_AUTH = False
+AWS_PRELOAD_METADATA = True
+AWS_ACCESS_KEY_ID = config('AWS_ACESS_KEY_ID','')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY','')
+AWS_STORAGE_BUCKET_NAME = 'everton-djangoecommerce'
+AWS_S3_CUSTOM_DOMAIN = 's3.amazonaws.com/%s' %AWS_STORAGE_BUCKET_NAME
+
+STATICFILES_STORAGE ='djangoecommerce.s3util.StaticStorage'
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN,STATICFILES_LOCATION)
+
+DEFAULT_FILE_STORAGE = 'djangoecommerce.s3util.MediaStorage'
+MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN,MEDIAFILES_LOCATION)
+
+AWS_S3_OBJECT_PARAMETERS={
+    'x-amz-acl': 'public-read'
+    'CacheControl':'public, max-age=31556926'
+}
 
 
 
-STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,"static"),
@@ -144,3 +164,6 @@ THUMBNAIL_ALIASES = {
         'product_image': {'size': (350, 200), 'crop': True},
     },
 }
+
+THUMBNAIL_DEFAULT_STORAGE = DEFAULT_FILE_STORAGE
+
