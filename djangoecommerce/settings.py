@@ -115,7 +115,7 @@ DEFAULT_FILE_STORAGE = 'djangoecommerce.s3util.MediaStorage'
 MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN,MEDIAFILES_LOCATION)
 
 AWS_S3_OBJECT_PARAMETERS={
-    'x-amz-acl': 'public-read'
+    'x-amz-acl': 'public-read',
     'CacheControl':'public, max-age=31556926'
 }
 
